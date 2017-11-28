@@ -14,7 +14,7 @@ class TypeX:
         # TODO: remove all of the non-encodable characters
         return string
 
-    def rotate(self):
+    def step(self):
         # TODO: Figure out how to rotate all of the
         # encryptors that should rotate, and none of
         # the ones that shouldn't
