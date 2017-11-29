@@ -24,16 +24,4 @@ class Encryptor:
     # one step. Return True if the next Encryptor in sequence
     # should also step(); otherwise, return False.
     def step(self):
-        # TODO: For each subclass, determine whether a call to
-        # step() actually results in the current position
-        # changing. For those where it does, implement the
-        # position mutation in the subclass' step() method.
-        # For those where it doesn't, decide whether it makes
-        # sense to return True (continue rotating the next
-        # Encryptor) or False (stop the rotation process).
-        #
-        # TODO: Figure out how to make it so that every subclass
-        # it FORCED to implement its own version of step().
-
-        # TODO: Remove this once there is useful code in this method
-        pass
+        raise NotImplementedError('step() must be implemented by Encryptor subclasses')

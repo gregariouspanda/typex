@@ -4,26 +4,29 @@ import sys
 from stator import Stator
 from rotor import Rotor
 from reflector import Reflector
+from encryptor import Encryptor
 
 class TypeX:
     def __init__(self, encryptors=[]):
-        # TODO: fill up the container of encryptors
-        pass
+        self.encryptors = encryptors
 
     def clean(self, string):
-        # TODO: remove all of the non-encodable characters
-        return string
+        clean_list = []
+        for char in string:
+            if char.upper() in Encryptor.ALPHABET:
+                clean_list.append(char.upper())
+            elif char == ' ':
+                clean_list.append('X')
+
+        return ''.join(clean_list)
 
     def step(self):
-        # TODO: Figure out how to rotate all of the
-        # encryptors that should rotate, and none of
-        # the ones that shouldn't
-
-        pass
+        for e in self.encryptors:
+            if not e.step():
+                break
 
     def encrypt(self, string):
-        # First, kill the lawyers^]ESCb^[ESCb^]ESCbrotate the rotors
-        self.rotate()
+        self.step()
 
         # Clean up the input string
         cleaned_string = self.clean(string)
@@ -37,10 +40,20 @@ class TypeX:
 
 def main():
     # TODO: pass in some actual stator/rotor configs here
-    typex = TypeX()
+    typex = TypeX(encryptors=[
+        Stator(wiring='THELAZYBROWNFXJUMPSVQICKDG', initial_position=0),
+        Stator(wiring='ABCDEFOPQGHIJKLMNRSTXYZUVW', initial_position=3),
+        Rotor(wiring='QWERTYUIOPASDFGHJKLZXCVBNM', initial_position=4, notchings=[0,5,12,16,25]),
+        Rotor(wiring='HELOWRDQTYUIPASFGJKZXCVBNM', initial_position=2, notchings=[3,4,6,10]),
+        Rotor(wiring='TMJKLQNSAPBUGCVRZWYHDEFOIX', initial_position=7)
+    ])
 
     # Read in all of the lines from stdin
-    input_text = sys.stdin.readlines()
+    input_text = ''
+    if sys.argv[1]:
+        input_text = open(sys.argv[1],'r').read()
+    else:
+        input_text = sys.stdin.readlines()
 
     # Encode the text from stdin
     encrypted_text = typex.encrypt(input_text)
