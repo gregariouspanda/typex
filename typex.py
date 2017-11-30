@@ -62,7 +62,7 @@ def main():
     if len(sys.argv) >= 2:
         input_text = ''.join(map(read_file, sys.argv[1:]))
     else:
-        input_text = sys.stdin.readlines()
+        input_text = sys.stdin.read()
 
     # Encode the text from stdin
     encrypted_text = typex.encrypt(input_text)
