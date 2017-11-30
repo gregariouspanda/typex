@@ -9,6 +9,7 @@ from encryptor import Encryptor
 class TypeX:
     def __init__(self, encryptors=[]):
         self.encryptors = encryptors
+        self.reflector = Reflector()
 
     def clean(self, string):
         clean_list = []
@@ -26,20 +27,28 @@ class TypeX:
                 break
 
     def encrypt(self, string):
-        self.step()
+        # Clean up the input string and
+        # encrypt it
+        encrypted_chars = []
+        for char in self.clean(string):
+            # Before encrypting each letter, step the rotors
+            self.step()
+            for e in self.encryptors:
+                char = e.encrypt_character(char)
+            char = self.reflector.encrypt_character(char)
+            for e in reversed(self.encryptors):
+                char = e.reverse_encrypt_character(char)
+            encrypted_chars.append(char)
 
-        # Clean up the input string
-        cleaned_string = self.clean(string)
 
-        # TODO: actually send the string through the
-        # sequence of stators, rotors, and reflectors
-        encrypted_string = cleaned_string # My what a lame encryption algorithm you have.
+        return ''.join(encrypted_chars)
 
-        # Return the encrypted string
-        return encrypted_string
+def read_file(file_name):
+    return open(file_name, 'r').read()
+
 
 def main():
-    # TODO: pass in some actual stator/rotor configs here
+
     typex = TypeX(encryptors=[
         Stator(wiring='THELAZYBROWNFXJUMPSVQICKDG', initial_position=0),
         Stator(wiring='ABCDEFOPQGHIJKLMNRSTXYZUVW', initial_position=3),
@@ -48,10 +57,10 @@ def main():
         Rotor(wiring='TMJKLQNSAPBUGCVRZWYHDEFOIX', initial_position=7)
     ])
 
-    # Read in all of the lines from stdin
-    input_text = ''
-    if sys.argv[1]:
-        input_text = open(sys.argv[1],'r').read()
+    # Read in all of the lines from file names
+    # specified in argument list or from stdin
+    if len(sys.argv) >= 2:
+        input_text = ''.join(map(read_file, sys.argv[1:]))
     else:
         input_text = sys.stdin.readlines()
 

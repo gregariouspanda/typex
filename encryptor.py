@@ -7,18 +7,18 @@ class Encryptor:
             self.wiring = self.ALPHABET
         self.position = initial_position
 
+    def char_to_pos(self, char):
+        return ord(char) - 65
+
     # Perform a substitution for a single character using the
     # current wiring and position of the encryptor
     def encrypt_character(self, char):
-        # TODO: Figure out how to encrypt a single character
-        # given our wiring and current rotation position
-        #
-        # TODO: Figure out whether we need to implement this
-        # here, or whether we need a different implementation
-        # for each subclass of Encryptor.
+        pos = self.char_to_pos(char) + self.position
+        return self.wiring[pos % len(self.wiring)]
 
-        # This placeholder is a terrible encryption algorithm :-)
-        return char
+    def reverse_encrypt_character(self, char):
+        pos = self.wiring.index(char) - self.position
+        return list(self.ALPHABET)[pos % len(self.wiring)]
 
     # If appropriate, increments self's current position by
     # one step. Return True if the next Encryptor in sequence
