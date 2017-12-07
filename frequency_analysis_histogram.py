@@ -2,41 +2,28 @@ import sys
 import matplotlib.pyplot as plt; plt.rcdefaults()
 import numpy as np
 import matplotlib.pyplot as plt
+from encryptor import Encryptor
 
 input_text = sys.stdin.read()
-ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-
-def clean(string):
-    clean_list = []
-    for char in string:
-        if char.upper() in ALPHABET:
-            clean_list.append(char.upper())
-    return ''.join(clean_list)
-
-
 letter_appearances = {}
 
-for char in ALPHABET:
-    if char not in letter_appearances.keys():
-        letter_appearances[char] = 0
-for char in clean(input_text):
-    if char not in letter_appearances.keys():
-        letter_appearances[char] = 1
-    else:
-        letter_appearances[char] += 1
+for char in Encryptor.ALPHABET:
+    letter_appearances[char] = 0
 
-sorted_keys = list(sorted(letter_appearances.keys()))
-value = []
-for key in sorted_keys:
-    value.append(letter_appearances[key])
-y_pos = np.arange(len(value))
+for char in input_text:
+    if char.upper() in Encryptor.ALPHABET:
+        if char != 'X':
+            letter_appearances[char.upper()] += 1
 
-plt.bar(y_pos, value, align='center', alpha=1)
-plt.xticks(y_pos, sorted_keys)
+sorted_letters = sorted(letter_appearances.keys(), key= lambda letter: letter_appearances[letter], reverse=True)
+sorted_appearances = sorted(letter_appearances.values(), reverse=True)
+
+y_pos = np.arange(len(sorted_appearances))
+
+plt.bar(y_pos, sorted_appearances, align='center', alpha=1)
+plt.xticks(y_pos, sorted_letters)
 plt.ylabel('Number of occurances')
 plt.xlabel('Letter')
 plt.title('Letter Frequency')
 plt.show()
-
-
 
