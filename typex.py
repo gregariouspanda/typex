@@ -8,7 +8,23 @@ from encryptor import Encryptor
 
 class TypeX:
     def __init__(self, encryptors=[]):
+        # Encryptors must be a list, everything in that list
+        # must be either a stator or a rotor and stators
+        # must be before rotors
+        if type(encryptors) != list:
+            raise TypeError("Encryptors must be a list")
+        else:
+            found_rotors = False
+            for e in encryptors:
+                if isinstance(e, Rotor):
+                    found_rotors = True
+                elif isinstance(e, Stator):
+                    if found_rotors:
+                        raise ValueError("Stators must come before Rotors")
+                else:
+                    raise TypeError("All encryptors must be Stators or Rotors")
         self.encryptors = encryptors
+
         self.reflector = Reflector()
 
     def clean(self, string):
