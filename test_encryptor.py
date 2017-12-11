@@ -42,17 +42,6 @@ class EncryptorTest(unittest2.TestCase):
         with self.assertRaises(ValueError):
            Encryptor(initial_position=27)
 
-    def test_char_to_pos(self):
-        e = Encryptor()
-        self.assertEqual(e.char_to_pos('A'), 0)
-        self.assertEqual(e.char_to_pos('Z'), 25)
-
-        with self.assertRaises(ValueError):
-            e.char_to_pos('a')
-
-        with self.assertRaises(TypeError):
-            e.char_to_pos(42)
-
     def test_encrypt_character(self):
         e = Encryptor(wiring=Encryptor.ALPHABET, initial_position=1)
 

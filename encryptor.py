@@ -21,7 +21,7 @@ class Encryptor:
         else:
             self.position = initial_position
 
-    def char_to_pos(self, char):
+    def __char_to_pos(self, char):
         if type(char) != str:
             raise TypeError("Input must be a string")
         elif len(char) != 1:
@@ -34,7 +34,7 @@ class Encryptor:
     # Perform a substitution for a single character using the
     # current wiring and position of the encryptor
     def encrypt_character(self, char):
-        pos = self.char_to_pos(char) + self.position
+        pos = self.__char_to_pos(char) + self.position
         return self.wiring[pos % len(self.wiring)]
 
     def reverse_encrypt_character(self, char):
