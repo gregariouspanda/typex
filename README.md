@@ -77,7 +77,7 @@ The relevant classes are:
 
 # Bugs
 
-Currently the typex.py script contains a TypeX constructor with a hardcoded list of Stators and Rotors, and needs to be edited to modify the encryption settings. This should be considered a bug. See TODO.
+Currently the typex script contains a TypeX constructor with a hardcoded list of Stators and Rotors, and needs to be edited to modify the encryption settings. This should be considered a bug. See TODO.
 
 The Enigma and TypeX algorithms support only 26-character alphabets. This means that spaces, punctuation, and other nice features of readable language are discarded. This isn't a bug in this code repo, but it sure is annoying. See TODO.
 
@@ -85,7 +85,7 @@ The Enigma and TypeX algorithms support only 26-character alphabets. This means 
 
 - Turn this into a pip module and publish it to [PyPI](https://pypi.python.org/pypi)
 - Support a plugboard configuration in addition to stators, for even more cryptographic strength
-- Modify typex.py to accept TypeX constructor arguments using [Argparse](https://docs.python.org/3/howto/argparse.html) options or something similar
+- Modify typex to accept TypeX constructor arguments using [Argparse](https://docs.python.org/3/howto/argparse.html) options or something similar
 - Support a pre-generated "codebook" of TypeX configurations for use by date and/or per communication partner
 - Add support for rotors larger than 26 characters, i.e. to support spaces, punctuation, carriage returns, etc.
 
