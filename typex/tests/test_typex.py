@@ -1,8 +1,8 @@
-from typex import TypeX
-from encryptor import Encryptor
-from rotor import Rotor
-from stator import Stator
-from reflector import Reflector
+from typex.typex import TypeX
+from typex.encryptor import Encryptor
+from typex.rotor import Rotor
+from typex.stator import Stator
+from typex.reflector import Reflector
 import unittest2
 
 class TypeXTest(unittest2.TestCase):

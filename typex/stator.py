@@ -1,4 +1,4 @@
-from encryptor import Encryptor
+from typex.encryptor import Encryptor
 
 class Stator(Encryptor):
     def step(self):

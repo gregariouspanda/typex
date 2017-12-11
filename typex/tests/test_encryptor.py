@@ -1,4 +1,4 @@
-from encryptor import Encryptor
+from typex.encryptor import Encryptor
 import unittest2
 
 class EncryptorTest(unittest2.TestCase):

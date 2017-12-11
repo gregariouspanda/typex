@@ -3,7 +3,7 @@ import sys
 import matplotlib.pyplot as plt; plt.rcdefaults()
 import numpy as np
 import matplotlib.pyplot as plt
-from encryptor import Encryptor
+from typex.encryptor import Encryptor
 
 input_text = sys.stdin.read()
 letter_appearances = {}
