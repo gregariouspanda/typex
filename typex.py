@@ -27,7 +27,7 @@ class TypeX:
 
         self.reflector = Reflector()
 
-    def clean(self, string):
+    def __clean(self, string):
         clean_list = []
         for char in string:
             if char.upper() in Encryptor.ALPHABET:
@@ -37,7 +37,7 @@ class TypeX:
 
         return ''.join(clean_list)
 
-    def step(self):
+    def __step(self):
         for e in self.encryptors:
             if not e.step():
                 break
@@ -46,15 +46,14 @@ class TypeX:
         # Clean up the input string and
         # encrypt it
         encrypted_chars = []
-        for char in self.clean(string):
+        for char in self.__clean(string):
             # Before encrypting each letter, step the rotors
-            self.step()
+            self.__step()
             for e in self.encryptors:
                 char = e.encrypt_character(char)
             char = self.reflector.encrypt_character(char)
             for e in reversed(self.encryptors):
                 char = e.reverse_encrypt_character(char)
             encrypted_chars.append(char)
-
 
         return ''.join(encrypted_chars)
