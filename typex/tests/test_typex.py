@@ -8,10 +8,12 @@ import unittest2
 class TypeXTest(unittest2.TestCase):
 
     def test_constructor(self):
+        """Check that TypeX constructor works properly"""
         self.assertTrue(isinstance(TypeX(), TypeX))
         self.assertTrue(isinstance(TypeX(encryptors=[]), TypeX))
 
     def test_if_encryptors_are_valid(self):
+        """Check that TypeX constructor works only with valid encryptors"""
         self.assertTrue(isinstance(TypeX(encryptors=[
             Stator(wiring='ABCDEFOPQGHIJKLMNRSTXYZUVW', initial_position=3),
             Rotor(wiring='QWERTYUIOPASDFGHJKLZXCVBNM', initial_position=4, notchings=[0,5,12,16,25])]),
