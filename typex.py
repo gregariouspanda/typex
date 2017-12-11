@@ -32,8 +32,6 @@ class TypeX:
         for char in string:
             if char.upper() in Encryptor.ALPHABET:
                 clean_list.append(char.upper())
-            elif char == ' ':
-                clean_list.append('X')
 
         return ''.join(clean_list)
 

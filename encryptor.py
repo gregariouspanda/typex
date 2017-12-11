@@ -1,5 +1,7 @@
 class Encryptor:
-    ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    FIRST_13_CHARS = 'ABCDEFGHIJKLM'
+    LAST_13_CHARS = 'NOPQRSTUVWXYZ'
+    ALPHABET = FIRST_13_CHARS + ' ' + LAST_13_CHARS
 
     def __init__(self, wiring=None, initial_position=0):
 
@@ -9,7 +11,7 @@ class Encryptor:
             raise TypeError("Wiring must be a string")
         elif len(wiring) != len(self.ALPHABET):
             raise ValueError("Wiring must be {0} letters long".format(len(self.ALPHABET)))
-        elif ''.join(sorted(list(wiring.upper()))) != self.ALPHABET:
+        elif ''.join(sorted(list(wiring.upper()))) != ''.join(sorted(list(self.ALPHABET))):
             raise ValueError("Wiring must have unique, alphabetic characters")
         else:
             self.wiring = wiring.upper()
@@ -27,9 +29,15 @@ class Encryptor:
         elif len(char) != 1:
             raise ValueError("Input must be a single character")
         elif char not in self.ALPHABET:
-            raise ValueError("Input must be a capital letter")
-        else:
+            raise ValueError("Input must be a capital letter or a space")
+        elif char in self.FIRST_13_CHARS:
             return ord(char) - 65
+        elif char in self.LAST_13_CHARS:
+            return ord(char) - 64
+        elif ord(char) == 32:
+            return 13
+        else:
+            raise ValueError("wtf.")
 
     # Perform a substitution for a single character using the
     # current wiring and position of the encryptor

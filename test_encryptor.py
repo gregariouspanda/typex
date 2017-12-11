@@ -4,7 +4,7 @@ import unittest2
 class EncryptorTest(unittest2.TestCase):
     def test_constructor(self):
         self.assertTrue(isinstance(Encryptor(), Encryptor))
-        self.assertTrue(isinstance(Encryptor(wiring='ZAQXSWCDEVFRBGTNHYMJUKILOP'), Encryptor))
+        self.assertTrue(isinstance(Encryptor(wiring='ZAQXSWCDEVFRBGTN HYMJUKILOP'), Encryptor))
         self.assertTrue(isinstance(Encryptor(initial_position=25), Encryptor))
 
     def test_wiring_type(self):
@@ -19,16 +19,16 @@ class EncryptorTest(unittest2.TestCase):
            Encryptor(wiring='ABCDEFGHIJKLMNOPQRSTUVWXYZa')
 
     def test_wiring_is_alphabetic(self):
-        self.assertTrue(isinstance(Encryptor(wiring='abcdefghijklmnopqrstuvwxyz'), Encryptor))
+        self.assertTrue(isinstance(Encryptor(wiring='abcdefghijklmnopqrstuvwxyz '), Encryptor))
 
         with self.assertRaises(ValueError):
            Encryptor(wiring='ABCDEFGHIJKLMNOPQRSTUVWX.!')
 
     def test_wiring_characters_are_unique(self):
-        self.assertTrue(isinstance(Encryptor(wiring='ABCDEFGHIJKLMNOPQRSTUVWXYZ'), Encryptor))
+        self.assertTrue(isinstance(Encryptor(wiring='ABCDEFGHIJKLMNOPQRSTUVWXYZ '), Encryptor))
 
         with self.assertRaises(ValueError):
-           Encryptor(wiring='ABCDEFGHIJKLMABCDEFGHIJKLMN')
+           Encryptor(wiring='ABCDEFGHIJKLMABCDEFGHIJKLMN ')
 
     def test_initial_position_is_valid(self):
         self.assertTrue(isinstance(Encryptor(initial_position=7), Encryptor))

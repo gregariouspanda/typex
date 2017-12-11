@@ -11,11 +11,11 @@ def read_file(file_name):
 def main():
 
     typex = TypeX(encryptors=[
-        Stator(wiring='THELAZYBROWNFXJUMPSVQICKDG', initial_position=0),
-        Stator(wiring='ABCDEFOPQGHIJKLMNRSTXYZUVW', initial_position=3),
-        Rotor(wiring='QWERTYUIOPASDFGHJKLZXCVBNM', initial_position=4, notchings=[0,5,12,16,25]),
-        Rotor(wiring='HELOWRDQTYUIPASFGJKZXCVBNM', initial_position=2, notchings=[3,4,6,10]),
-        Rotor(wiring='TMJKLQNSAPBUGCVRZWYHDEFOIX', initial_position=7)
+        Stator(wiring='THELAZYBROWNFXJUMPSVQICKDG ', initial_position=0),
+        Stator(wiring='ABCDEFOPQGHIJKLMNRSTXYZUVW ', initial_position=3),
+        Rotor(wiring='QWERTYUIOPASDFGHJKLZXCVBNM ', initial_position=4, notchings=[0,5,12,16,25]),
+        Rotor(wiring='HELOWRDQTYUIPASFGJKZXCVBNM ', initial_position=2, notchings=[3,4,6,10]),
+        Rotor(wiring='TMJKLQNSAPBUGCVRZWYHDEFOIX ', initial_position=7)
     ])
 
     # Read in all of the lines from file names
