@@ -7,8 +7,4 @@ class Rotor(Encryptor):
 
     def step(self):
         self.position = (self.position + 1) % len(self.wiring)
-
-        if self.position in self.notchings:
-            return True
-        else:
-            return False
+        return self.position in self.notchings
