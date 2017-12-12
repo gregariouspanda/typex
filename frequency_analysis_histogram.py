@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import sys
 import matplotlib.pyplot as plt; plt.rcdefaults()
 import numpy as np
@@ -12,7 +13,6 @@ for char in Encryptor.ALPHABET:
 
 for char in input_text:
     if char.upper() in Encryptor.ALPHABET:
-        if char != 'X':
             letter_appearances[char.upper()] += 1
 
 sorted_letters = sorted(letter_appearances.keys(), key= lambda letter: letter_appearances[letter], reverse=True)
