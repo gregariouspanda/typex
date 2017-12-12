@@ -87,7 +87,7 @@ The Enigma and TypeX algorithms support only 26-character alphabets. This means 
 - Support a plugboard configuration in addition to stators, for even more cryptographic strength
 - Modify typex to accept TypeX constructor arguments using [Argparse](https://docs.python.org/3/howto/argparse.html) options or something similar
 - Support a pre-generated "codebook" of TypeX configurations for use by date and/or per communication partner
-- Add support for rotors larger than 26 characters, i.e. to support spaces, punctuation, carriage returns, etc.
+- Add support for rotors larger than 26 characters, i.e. to support punctuation, carriage returns, etc.
 
 # References
 
