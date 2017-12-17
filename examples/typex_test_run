@@ -5,16 +5,20 @@ from typex.typex import TypeX
 from typex.stator import Stator
 from typex.rotor import Rotor
 
+
 def read_file(file_name):
     return open(file_name, 'r').read()
+
 
 def main():
 
     typex = TypeX(encryptors=[
         Stator(wiring='THELAZYBROWNFXJUMPSVQICKDG', initial_position=0),
         Stator(wiring='ABCDEFOPQGHIJKLMNRSTXYZUVW', initial_position=3),
-        Rotor(wiring='QWERTYUIOPASDFGHJKLZXCVBNM', initial_position=4, notchings=[0,5,12,16,25]),
-        Rotor(wiring='HELOWRDQTYUIPASFGJKZXCVBNM', initial_position=2, notchings=[3,4,6,10]),
+        Rotor(wiring='QWERTYUIOPASDFGHJKLZXCVBNM', initial_position=4,
+              notchings=[0, 5, 12, 16, 25]),
+        Rotor(wiring='HELOWRDQTYUIPASFGJKZXCVBNM', initial_position=2,
+              notchings=[3, 4, 6, 10]),
         Rotor(wiring='TMJKLQNSAPBUGCVRZWYHDEFOIX', initial_position=7)
     ])
 
@@ -30,6 +34,7 @@ def main():
 
     # Print the result to stdout
     print(''.join(encrypted_text))
+
 
 if __name__ == '__main__':
     main()

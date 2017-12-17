@@ -1,5 +1,6 @@
 from typex.encryptor import Encryptor
 
+
 class Rotor(Encryptor):
     def __init__(self, wiring=None, initial_position=0, notchings=[]):
         super().__init__(wiring, initial_position)

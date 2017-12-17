@@ -1,5 +1,6 @@
 from typex.encryptor import Encryptor
 
+
 class Reflector(Encryptor):
     # Construct a new reflector (with hardcoded wiring)
     def __init__(self):
