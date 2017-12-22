@@ -1,10 +1,9 @@
-import sys
-
 # Our classes
-from stator import Stator
-from rotor import Rotor
-from reflector import Reflector
-from encryptor import Encryptor
+from typex.stator import Stator
+from typex.rotor import Rotor
+from typex.reflector import Reflector
+from typex.encryptor import Encryptor
+
 
 class TypeX:
     def __init__(self, encryptors=[]):

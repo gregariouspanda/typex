@@ -1,4 +1,5 @@
-from encryptor import Encryptor
+from typex.encryptor import Encryptor
+
 
 class Reflector(Encryptor):
     # Construct a new reflector (with hardcoded wiring)
